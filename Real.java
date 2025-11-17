@@ -9,50 +9,23 @@ public class Real implements Number{
         return value;
     }
 
-    @Override
-    public Number add(Number other) {
-        if (other instanceof Integer) {
-            return new Real(this.value + ((Integer) other).value);
-        } else if (other instanceof Real) {
-            return new Real(this.value + ((Real) other).value);
-        }
-        throw new IllegalArgumentException("Unsupported type");
+    public Real sum(Real other) {
+        return new Real(this.value + other.value);
     }
 
-    @Override
-    public Number subtract(Number other) {
-        if (other instanceof Integer) {
-            return new Real(this.value - ((Integer) other).value);
-        } else if (other instanceof Real) {
-            return new Real(this.value - ((Real) other).value);
-        }
-        throw new IllegalArgumentException("Unsupported type");
+    public Real otr(Real other) {
+        return new Real(this.value - other.value);
     }
 
-    @Override
-    public Number multiply(Number other) {
-        if (other instanceof Integer) {
-            return new Real(this.value * ((Integer) other).value);
-        } else if (other instanceof Real) {
-            return new Real(this.value * ((Real) other).value);
-        }
-        throw new IllegalArgumentException("Unsupported type");
+    public Real umn(Real other) {
+        return new Real(this.value * other.value);
     }
 
-    @Override
-    public Number divide(Number other) {
-        if (other instanceof Integer) {
-            if (((Integer) other).value == 0) throw new ArithmeticException("Division by zero");
-            return new Real(this.value / ((Integer) other).value);
-        } else if (other instanceof Real) {
-            if (((Real) other).value == 0) throw new ArithmeticException("Division by zero");
-            return new Real(this.value / ((Real) other).value);
+    public Real del(Real other) {
+        if (other.value == 0.0) {
+            throw new ArithmeticException("Division by zero");
         }
-        throw new IllegalArgumentException("Unsupported type");
+        return new Real(this.value / other.value);
     }
 
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
 }
